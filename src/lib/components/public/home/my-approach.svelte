@@ -87,7 +87,10 @@
 					If it doesn't increase revenue or reduce operational friction, it doesn't stay.
 				</p>
 
-				<Button href="#">
+				<Button
+					href="#"
+					class="bg-gradient-to-r from-sky-400 to-violet-500 text-white border-0 shadow-md hover:brightness-110 hover:scale-[1.02] hover:shadow-lg active:scale-[0.98] transition-all duration-200"
+				>
 					<svg
 						class="size-4 shrink-0"
 						xmlns="http://www.w3.org/2000/svg"

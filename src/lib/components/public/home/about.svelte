@@ -40,7 +40,7 @@
                         </div>
                     </div>
                 </div>
-                <Button>Read More</Button>
+                <Button class="bg-gradient-to-r from-sky-400 to-violet-500 text-white border-0 shadow-md hover:brightness-110 hover:scale-[1.02] hover:shadow-lg active:scale-[0.98] transition-all duration-200">Read More</Button>
             </div>
         </div>
     </div>

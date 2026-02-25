@@ -39,8 +39,17 @@
               <div
                 class="flex flex-col md:flex-row gap-5 lg:justify-start justify-center"
               >
-                <Button href="#">Watch the Builds</Button>
-                <Button href="#" variant="outline">
+                <Button
+                href="#"
+                class="bg-gradient-to-r from-sky-400 to-violet-500 text-white border-0 shadow-md hover:brightness-110 hover:scale-[1.02] hover:shadow-lg active:scale-[0.98] transition-all duration-200"
+              >
+                Watch the Builds
+              </Button>
+                <Button
+                  href="#"
+                  variant="outline"
+                  class="border-2 bg-gradient-to-r from-sky-400/10 to-violet-500/10 hover:from-sky-400 hover:to-violet-500 hover:text-white hover:border-transparent transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
+                >
                   View more
                   <svg
                     class="stroke-primary shrink-0"
@@ -79,11 +88,9 @@
               type="button"
               size="icon"
               aria-label="Play video"
+              class="bg-gradient-to-r from-sky-400 to-violet-500 text-white border-0 shadow-md hover:brightness-110 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
             >
-              <svg class="w-9 h-9 md:w-12 md:h-12 fill-current"
-              width=""
-              height=""
-              viewBox="0 0 50 50"
+              <svg class="w-9 h-9 md:w-12 md:h-12 fill-current" viewBox="0 0 50 50"
               xmlns="http://www.w3.org/2000/svg"
             >
               <path

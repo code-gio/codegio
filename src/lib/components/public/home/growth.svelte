@@ -93,10 +93,10 @@
 					<div class="flex items-center justify-center gap-4 lg:justify-start">
 						<Button
 							type="button"
-							variant="outline"
 							size="icon"
 							onclick={scrollPrev}
 							aria-label="Previous slide"
+							class="bg-gradient-to-r from-sky-400 to-violet-500 text-white border-0 shadow-md hover:brightness-110 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
 						>
 							<svg
 								class="h-4 w-4"
@@ -117,10 +117,10 @@
 						</Button>
 						<Button
 							type="button"
-							variant="outline"
 							size="icon"
 							onclick={scrollNext}
 							aria-label="Next slide"
+							class="bg-gradient-to-r from-sky-400 to-violet-500 text-white border-0 shadow-md hover:brightness-110 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
 						>
 							<svg
 								class="h-4 w-4"

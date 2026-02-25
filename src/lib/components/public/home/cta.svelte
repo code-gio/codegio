@@ -13,8 +13,19 @@
                         <p><strong class="text-secondary-foreground">If you want it designed and implemented properly:</strong><br>Book a Growth Infrastructure Strategy Call.</p>
                     </div>
                     <div class="pt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                        <Button href="/growth-infrastructure-checklist">Download the Checklist</Button>
-                        <Button href="/book-strategy-call" variant="outline">Book a Strategy Call</Button>
+                        <Button
+                            href="/growth-infrastructure-checklist"
+                            class="bg-gradient-to-r from-sky-400 to-violet-500 text-white border-0 shadow-md hover:brightness-110 hover:scale-[1.02] hover:shadow-lg active:scale-[0.98] transition-all duration-200"
+                        >
+                            Download the Checklist
+                        </Button>
+                        <Button
+                            href="/book-strategy-call"
+                            variant="outline"
+                            class="border-2 bg-gradient-to-r from-sky-400/10 to-violet-500/10 hover:from-sky-400 hover:to-violet-500 hover:text-white hover:border-transparent transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
+                        >
+                            Book a Strategy Call
+                        </Button>
                     </div>
                 </div>
                 <div class="grid grid-cols-12 gap-3.5">

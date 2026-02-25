@@ -107,7 +107,12 @@
 				<div
 					class="flex flex-col items-center justify-center gap-7 xl:flex-row xl:justify-start"
 				>
-					<Button href="#">Schedule a call</Button>
+					<Button
+					href="#"
+					class="bg-gradient-to-r from-sky-400 to-violet-500 text-white border-0 shadow-md hover:brightness-110 hover:scale-[1.02] hover:shadow-lg active:scale-[0.98] transition-all duration-200"
+				>
+					Schedule a call
+				</Button>
 					<span class="text-sm font-normal text-muted-foreground">
 						*Terms &amp; Conditions apply
 					</span>

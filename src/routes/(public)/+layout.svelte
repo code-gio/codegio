@@ -1,8 +1,18 @@
 <script>
+  import { page } from '$app/stores';
   import Header from "$lib/components/public/header.svelte";
   import Footer from "$lib/components/public/footer.svelte";
-  let { children } = $props();  
+  let { children } = $props();
+  const isHome = $derived($page?.url?.pathname === '/');
 </script>
-<Header />
-{@render children?.()}
-<Footer />
+{#if isHome}
+  <div class="dark">
+    <Header />
+    {@render children?.()}
+    <Footer />
+  </div>
+{:else}
+  <Header />
+  {@render children?.()}
+  <Footer />
+{/if}
