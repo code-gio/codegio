@@ -100,11 +100,12 @@
 				#f8fafc 90%,
 				transparent 50%
 			),
-			radial-gradient(circle at 10% 80%, rgba(56, 189, 248, 0.5), transparent 60%),
-			radial-gradient(circle at 90% 20%, rgba(168, 85, 247, 0.5), transparent 60%),
+			radial-gradient(circle at 10% 80%, rgba(56, 189, 248, 0.85), transparent 60%),
+			radial-gradient(circle at 90% 20%, rgba(168, 85, 247, 0.85), transparent 60%),
 			radial-gradient(circle at 50% 120%, #e2e8f0 0%, #cbd5e1 60%);
 		border: 1px solid rgba(148, 163, 184, 0.3);
-		box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.1), 0 40px 80px rgba(56, 189, 248, 0.15);
+		box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.1), 0 40px 80px rgba(56, 189, 248, 0.45),
+			0 30px 60px rgba(168, 85, 247, 0.35);
 		animation: heroOrbSpin 26s linear infinite;
 	}
 

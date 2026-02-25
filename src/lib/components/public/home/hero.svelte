@@ -39,13 +39,14 @@
 		height: 420px;
 		border-radius: 9999px;
 		filter: blur(80px);
-		opacity: 0;
-		mix-blend-mode: screen;
+		opacity: 0.6;
+		mix-blend-mode: multiply;
 		animation: heroBlobFloat 18s ease-in-out infinite alternate;
 	}
 
 	:global(.dark) .hero-blob {
 		opacity: 0.7;
+		mix-blend-mode: screen;
 	}
 
 	.hero-blob-1 {
@@ -75,6 +76,7 @@
 		grid-template-columns: 1fr;
 		gap: 2.5rem;
 		padding: 2.5rem 0;
+		align-items: center;
 	}
 
 	/* Tablet: 2 columns with balanced ratio */
