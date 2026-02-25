@@ -35,13 +35,6 @@
 		align-items: center;
 		justify-content: center;
 		width: 100%;
-		order: -1;
-	}
-
-	@media (min-width: 900px) {
-		.hero-visual {
-			order: 0;
-		}
 	}
 
 	.hero-visual-inner {
@@ -53,6 +46,46 @@
 		gap: 1.5rem;
 		padding: 1.5rem 0;
 		margin-inline: auto;
+	}
+
+	@media (min-width: 641px) and (max-width: 899px) {
+		.hero-visual-inner {
+			width: 90%;
+			gap: 1.25rem;
+			padding: 1rem 0;
+		}
+
+		.hero-orb {
+			width: 85%;
+		}
+	}
+
+	@media (max-width: 640px) {
+		.hero-visual {
+			display: none;
+		}
+
+		.hero-visual-inner {
+			width: 92%;
+			gap: 1.25rem;
+			padding: 1rem 0;
+		}
+
+		.hero-orb {
+			width: 75%;
+		}
+
+		.hero-visual-footer {
+			font-size: 0.8125rem;
+		}
+
+		.hero-visual-label {
+			font-size: 0.65rem;
+		}
+
+		.hero-visual-stat {
+			font-size: 0.8125rem;
+		}
 	}
 
 	.hero-orb {

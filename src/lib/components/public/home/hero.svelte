@@ -77,18 +77,35 @@
 		padding: 2.5rem 0;
 	}
 
+	/* Tablet: 2 columns with balanced ratio */
+	@media (min-width: 641px) and (max-width: 899px) {
+		.hero-wrapper {
+			padding: 4rem 1.5rem;
+		}
+
+		.hero {
+			grid-template-columns: 1fr 1fr;
+			gap: 2rem;
+			padding: 2rem 0;
+			align-items: center;
+		}
+	}
+
+	/* Desktop */
 	@media (min-width: 900px) {
 		.hero {
 			grid-template-columns: 1.2fr 1fr;
 		}
 	}
 
+	/* Mobile */
 	@media (max-width: 640px) {
 		.hero-wrapper {
 			padding: 3.5rem 1rem;
 		}
 
 		.hero {
+			gap: 2rem;
 			padding: 1.5rem 0;
 		}
 	}
