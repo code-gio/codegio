@@ -1,6 +1,7 @@
 <script lang="ts">
 	import HeroText from "./hero/hero-text.svelte";
 	import HeroVisual from "./hero/hero-visual.svelte";
+	import TrustedLogos from "./hero/trusted-logos.svelte";
 </script>
 
 <!-- Background: dark gradient with blobs in dark mode, subtle light gradient in light mode -->
@@ -17,6 +18,7 @@
 		<HeroText />
 		<HeroVisual />
 	</section>
+		<TrustedLogos />
 </div>
 
 <style>
@@ -66,7 +68,7 @@
 		width: 100%;
 		max-width: 80rem;
 		margin-inline: auto;
-		padding: 5rem 1.5rem;
+		padding: 3.5rem 1.5rem;
 	}
 
 	.hero {
