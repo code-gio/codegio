@@ -34,6 +34,7 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		width: 100%;
 		order: -1;
 	}
 
@@ -45,8 +46,7 @@
 
 	.hero-visual-inner {
 		position: relative;
-		width: 100%;
-		max-width: 360px;
+		width: 80%;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
@@ -55,15 +55,9 @@
 		margin-inline: auto;
 	}
 
-	@media (min-width: 900px) {
-		.hero-visual-inner {
-			margin-inline: 0;
-		}
-	}
-
 	.hero-orb {
 		position: relative;
-		width: 72%;
+		width: 80%;
 		aspect-ratio: 1 / 1;
 		border-radius: 9999px;
 		margin: 0.5rem auto 0.75rem;

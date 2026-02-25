@@ -75,54 +75,115 @@
 {/snippet}
 
 <header
-	class="sticky top-0 z-50 flex w-full items-center border-b border-border/40 bg-background/70 px-4 py-4 backdrop-blur-md supports-[backdrop-filter]:bg-background/60 dark:border-border/30 dark:bg-background/50"
+	class="sticky top-0 z-50 flex w-full items-center border-b border-border/40 bg-background/70 px-4 py-3 backdrop-blur-md supports-[backdrop-filter]:bg-background/60 dark:border-border/30 dark:bg-background/50 sm:px-6 lg:py-4"
 >
-	<nav class="mx-auto flex w-full max-w-7xl items-center justify-between gap-4">
+	<nav class="mx-auto flex w-full max-w-7xl items-center justify-between gap-2 sm:gap-4">
 		<a href="/" class="flex shrink-0" aria-label="Home">
-			<img src={logo} alt="Codegio" class="h-6 dark:hidden" />
-			<img src={logoWhite} alt="Codegio" class="hidden h-6 dark:block" />
+			<img src={logo} alt="Codegio" class="h-5 w-auto sm:h-6 dark:hidden" />
+			<img src={logoWhite} alt="Codegio" class="hidden h-5 w-auto sm:h-6 dark:block" />
 		</a>
 
-		<NavigationMenu.Root viewport={!isMobile.current} class="flex flex-1 justify-end">
-			<NavigationMenu.List class="flex flex-wrap items-center gap-1">
-				{#each navItems as item}
-					{#if item.type === 'link'}
-						<NavigationMenu.Item>
-							<NavigationMenu.Link>
-								{#snippet child()}
-									<a href={item.href} class={navigationMenuTriggerStyle()}>{item.label}</a>
-								{/snippet}
-							</NavigationMenu.Link>
-						</NavigationMenu.Item>
-					{:else}
-						<NavigationMenu.Item>
-							<NavigationMenu.Trigger>{item.label}</NavigationMenu.Trigger>
-							<NavigationMenu.Content>
-								<ul class="grid w-[200px] gap-2 p-2 sm:w-[280px]">
-									{#each item.links as link (link.href)}
-										{@render ListItem({
-											href: link.href,
-											title: link.title,
-											content: link.description
-										})}
-									{/each}
-								</ul>
-							</NavigationMenu.Content>
-						</NavigationMenu.Item>
-					{/if}
-				{/each}
-			</NavigationMenu.List>
-		</NavigationMenu.Root>
+		{#if isMobileMenu.current}
+			<!-- Mobile: hamburger + actions -->
+			<div class="flex flex-1 items-center justify-end gap-1 sm:gap-2">
+				<Sheet.Root bind:open={mobileMenuOpen}>
+					<Sheet.Trigger
+						class="inline-flex size-9 items-center justify-center rounded-md hover:bg-accent hover:text-accent-foreground transition-colors"
+						aria-label="Open menu"
+					>
+						<MenuIcon class="size-5" />
+					</Sheet.Trigger>
+					<Sheet.Content side="left" class="w-[min(320px,85vw)]">
+						<Sheet.Header class="border-b pb-4">
+							<Sheet.Title class="text-lg font-semibold">Menu</Sheet.Title>
+						</Sheet.Header>
+						<nav class="flex flex-col gap-1 pt-4">
+							{#each navItems as item}
+								{#if item.type === 'link'}
+									<a
+										href={item.href}
+										class="hover:bg-accent hover:text-accent-foreground rounded-md px-3 py-2.5 text-sm font-medium transition-colors"
+										onclick={() => (mobileMenuOpen = false)}
+									>
+										{item.label}
+									</a>
+								{:else}
+									<div class="border-b border-border/40 pb-3">
+										<div class="mb-2 px-3 text-xs font-medium uppercase tracking-wider text-muted-foreground">
+											{item.label}
+										</div>
+										<div class="flex flex-col gap-0.5">
+											{#each item.links as link (link.href)}
+												<a
+													href={link.href}
+													class="hover:bg-accent hover:text-accent-foreground rounded-md px-3 py-2 text-sm transition-colors"
+													onclick={() => (mobileMenuOpen = false)}
+												>
+													{link.title}
+												</a>
+											{/each}
+										</div>
+									</div>
+								{/if}
+							{/each}
+						</nav>
+					</Sheet.Content>
+				</Sheet.Root>
+				<Button variant="ghost" size="icon" onclick={toggleTheme} aria-label="Toggle theme">
+					<MoonIcon class="size-4 sm:size-4 dark:hidden" />
+					<SunIcon class="hidden size-4 dark:block sm:size-4" />
+				</Button>
+				<Button variant="ghost" href="/login" class="hidden sm:inline-flex" size="default">
+					<UserIcon class="size-4" />
+					Log in
+				</Button>
+				<Button variant="ghost" href="/login" size="icon" aria-label="Log in" class="sm:hidden">
+					<UserIcon class="size-4" />
+				</Button>
+			</div>
+		{:else}
+			<!-- Desktop: full nav -->
+			<NavigationMenu.Root viewport={true} class="flex flex-1 justify-end">
+				<NavigationMenu.List class="flex flex-wrap items-center gap-1">
+					{#each navItems as item}
+						{#if item.type === 'link'}
+							<NavigationMenu.Item>
+								<NavigationMenu.Link>
+									{#snippet child()}
+										<a href={item.href} class={navigationMenuTriggerStyle()}>{item.label}</a>
+									{/snippet}
+								</NavigationMenu.Link>
+							</NavigationMenu.Item>
+						{:else}
+							<NavigationMenu.Item>
+								<NavigationMenu.Trigger>{item.label}</NavigationMenu.Trigger>
+								<NavigationMenu.Content>
+									<ul class="grid w-[200px] gap-2 p-2 sm:w-[280px]">
+										{#each item.links as link (link.href)}
+											{@render ListItem({
+												href: link.href,
+												title: link.title,
+												content: link.description
+											})}
+										{/each}
+									</ul>
+								</NavigationMenu.Content>
+							</NavigationMenu.Item>
+						{/if}
+					{/each}
+				</NavigationMenu.List>
+			</NavigationMenu.Root>
 
-		<div class="flex shrink-0 items-center gap-2">
-			<Button variant="ghost" size="icon" onclick={toggleTheme} aria-label="Toggle theme">
-				<MoonIcon class="h-4 w-4 dark:hidden" />
-				<SunIcon class="hidden h-4 w-4 dark:block" />
-			</Button>
-			<Button variant="ghost" href="/login">
-				<UserIcon class="size-4" />
-				Log in
-			</Button>
-		</div>
+			<div class="flex shrink-0 items-center gap-2">
+				<Button variant="ghost" size="icon" onclick={toggleTheme} aria-label="Toggle theme">
+					<MoonIcon class="size-4 w-4 dark:hidden" />
+					<SunIcon class="hidden size-4 w-4 dark:block" />
+				</Button>
+				<Button variant="ghost" href="/login">
+					<UserIcon class="size-4" />
+					Log in
+				</Button>
+			</div>
+		{/if}
 	</nav>
 </header>
