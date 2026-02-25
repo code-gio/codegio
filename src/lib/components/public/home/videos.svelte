@@ -1,3 +1,6 @@
+<script>
+  import { Button } from '$lib/components/ui/button';
+</script>
 
     <section
       class="relative py-5 lg:py-20 overflow-hidden before:content-[''] before:absolute before:bottom-0 before:bg-primary before:w-full before:h-28 lg:before:h-2/5"
@@ -36,16 +39,8 @@
               <div
                 class="flex flex-col md:flex-row gap-5 lg:justify-start justify-center"
               >
-                <a
-                  href="#"
-                  class="bg-primary py-2.5 px-6 rounded-xl flex items-center justify-center text-sm font-semibold text-primary-foreground transition-all duration-500 h-11 focus:outline-none hover:opacity-90"
-                >
-                  Watch the Builds
-                </a>
-                <a
-                  href="#"
-                  class="rounded-xl py-2.5 pl-5 pr-3 gap-2 flex items-center justify-center text-base font-semibold text-foreground transition-all duration-500 focus:outline-none hover:bg-accent"
-                >
+                <Button href="#">Watch the Builds</Button>
+                <Button href="#" variant="outline">
                   View more
                   <svg
                     class="stroke-primary shrink-0"
@@ -62,7 +57,7 @@
                       stroke-linejoin="round"
                     ></path>
                   </svg>
-                </a>
+                </Button>
               </div>
             </div>
           </div>
@@ -79,11 +74,13 @@
             src="https://pagedone.io/asset/uploads/1694848076.png"
             alt="Header tailwind section" class="rounded-3xl object-cover"
           />
-          <button
-            class="w-14 h-14 md:w-20 md:h-20 rounded-full border border-solid border-primary bg-primary/10 backdrop-blur-sm flex items-center justify-center absolute left-0 right-0 top-0 bottom-0 m-auto lg:w-28 lg:h-28 text-primary"
-            aria-label="Play video"
-          >
-            <svg class="w-9 h-9 md:w-12 md:h-12 fill-current"
+          <div class="absolute inset-0 flex items-center justify-center">
+            <Button
+              type="button"
+              size="icon"
+              aria-label="Play video"
+            >
+              <svg class="w-9 h-9 md:w-12 md:h-12 fill-current"
               width=""
               height=""
               viewBox="0 0 50 50"
@@ -93,7 +90,8 @@
                 d="M36.0844 18.7406C41.6399 21.9481 44.4177 23.5519 44.4177 25.9575C44.4177 28.3631 41.6399 29.9669 36.0844 33.1744L25 39.574C19.4444 42.7815 16.6667 44.3852 14.5833 43.1824C12.5 41.9796 12.5 38.7721 12.5 32.3571L12.5 19.5579C12.5 13.1429 12.5 9.93542 14.5833 8.7326C16.6667 7.52979 19.4444 9.13354 25 12.341L36.0844 18.7406Z"
               ></path>
             </svg>
-          </button>
+            </Button>
+          </div>
         </div>
       </div>
     </section>

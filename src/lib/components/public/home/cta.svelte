@@ -1,3 +1,7 @@
+<script>
+  import { Button } from '$lib/components/ui/button';
+</script>
+
 <section class="py-16">
     <div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 rounded-3xl bg-secondary border border-border">
         <div class="lg:p-20 p-4 sm:p-10 flex items-center flex-col lg:flex-row justify-between gap-8 lg:gap-0">
@@ -9,10 +13,8 @@
                         <p><strong class="text-secondary-foreground">If you want it designed and implemented properly:</strong><br>Book a Growth Infrastructure Strategy Call.</p>
                     </div>
                     <div class="pt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                        <a href="/growth-infrastructure-checklist"
-                            class="mx-auto lg:mx-0 py-2.5 px-5 flex items-center justify-center text-base font-semibold leading-7 text-primary-foreground rounded-xl bg-primary font-inter transition-all duration-500 hover:opacity-90">Download the Checklist</a>
-                        <a href="/book-strategy-call"
-                            class="mx-auto lg:mx-0 py-2.5 px-5 flex items-center justify-center text-base font-semibold leading-7 text-primary rounded-xl border-2 border-primary font-inter transition-all duration-500 hover:bg-primary hover:text-primary-foreground">Book a Strategy Call</a>
+                        <Button href="/growth-infrastructure-checklist">Download the Checklist</Button>
+                        <Button href="/book-strategy-call" variant="outline">Book a Strategy Call</Button>
                     </div>
                 </div>
                 <div class="grid grid-cols-12 gap-3.5">

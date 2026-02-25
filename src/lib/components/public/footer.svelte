@@ -20,12 +20,7 @@
 				>
 					Trusted in more than 100 countries & 5 million customers. Have any query?
 				</p>
-				<Button
-					href="/cta"
-					class="rounded-full mx-auto lg:mx-0"
-				>
-					Contact us
-				</Button>
+				<Button href="/cta">Contact us</Button>
 			</div>
 
 			<div class="lg:mx-auto text-left">
@@ -78,11 +73,7 @@
 				<p class="text-sm text-muted-foreground leading-6 mb-7">
 					Subscribe to get the latest news from us
 				</p>
-				<Button
-					href="/newsletter"
-					variant="outline"
-					class="rounded-full w-fit lg:mx-0 border-primary text-primary hover:bg-primary hover:text-primary-foreground"
-				>
+				<Button href="/newsletter" variant="outline">
 					Subscribe
 					<svg width="15" height="12" viewBox="0 0 15 12" fill="none" xmlns="http://www.w3.org/2000/svg">
 						<path

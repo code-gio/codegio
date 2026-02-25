@@ -1,6 +1,7 @@
 <script lang="ts">
 	import * as Carousel from "$lib/components/ui/carousel/index.js";
 	import type { CarouselAPI } from "$lib/components/ui/carousel/context.js";
+	import { Button } from "$lib/components/ui/button/index.js";
 	import GlobeIcon from "@lucide/svelte/icons/globe";
 	import FilterIcon from "@lucide/svelte/icons/filter";
 	import ZapIcon from "@lucide/svelte/icons/zap";
@@ -79,7 +80,7 @@
 					class="relative h-auto rounded-2xl bg-muted px-6 py-9 xl:h-64 border"
 				>
 					<h2
-						class="mb-5 text-center text-2xl font-bold leading-9 text-primary lg:text-left"
+						class="mb-5 text-center text-2xl font-bold leading-9 text-foreground lg:text-left"
 					>
 						Explore the five layers
 					</h2>
@@ -90,14 +91,15 @@
 					</p>
 					<!-- Carousel controls -->
 					<div class="flex items-center justify-center gap-4 lg:justify-start">
-						<button
+						<Button
 							type="button"
+							variant="outline"
+							size="icon"
 							onclick={scrollPrev}
-							class="group flex h-8 w-8 items-center justify-center rounded-full border border-primary p-1.5 transition-all duration-500 hover:bg-primary"
 							aria-label="Previous slide"
 						>
 							<svg
-								class="h-4 w-4 text-primary group-hover:text-primary-foreground"
+								class="h-4 w-4"
 								xmlns="http://www.w3.org/2000/svg"
 								width="16"
 								height="16"
@@ -112,15 +114,16 @@
 									stroke-linejoin="round"
 								/>
 							</svg>
-						</button>
-						<button
+						</Button>
+						<Button
 							type="button"
+							variant="outline"
+							size="icon"
 							onclick={scrollNext}
-							class="group flex h-8 w-8 items-center justify-center rounded-full border border-primary p-1.5 transition-all duration-500 hover:bg-primary"
 							aria-label="Next slide"
 						>
 							<svg
-								class="h-4 w-4 text-primary group-hover:text-primary-foreground"
+								class="h-4 w-4"
 								xmlns="http://www.w3.org/2000/svg"
 								width="16"
 								height="16"
@@ -135,7 +138,7 @@
 									stroke-linejoin="round"
 								/>
 							</svg>
-						</button>
+						</Button>
 					</div>
 				</div>
 			</div>
@@ -159,7 +162,7 @@
 									<div class="mb-3">
 										<Icon class="size-[26px] {slide.iconColor}" />
 									</div>
-									<h4 class="mb-2 text-lg font-semibold text-primary">
+									<h4 class="mb-2 text-lg font-semibold text-foreground">
 										{slide.title}
 									</h4>
 									<p class="text-sm leading-6 text-foreground">

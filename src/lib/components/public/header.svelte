@@ -133,11 +133,11 @@
 					<MoonIcon class="size-4 sm:size-4 dark:hidden" />
 					<SunIcon class="hidden size-4 dark:block sm:size-4" />
 				</Button>
-				<Button variant="ghost" href="/login" class="hidden sm:inline-flex" size="default">
+				<Button variant="ghost" href="/login" size="default">
 					<UserIcon class="size-4" />
 					Log in
 				</Button>
-				<Button variant="ghost" href="/login" size="icon" aria-label="Log in" class="sm:hidden">
+				<Button variant="ghost" href="/login" size="icon" aria-label="Log in">
 					<UserIcon class="size-4" />
 				</Button>
 			</div>

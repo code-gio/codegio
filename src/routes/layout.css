@@ -12,7 +12,7 @@
   --card-foreground: oklch(0.129 0.042 264.695);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.208 0.042 265.755);
+  --primary: var(--chart-2);
   --primary-foreground: oklch(0.984 0.003 247.858);
   --secondary: oklch(0.968 0.007 247.896);
   --secondary-foreground: oklch(0.208 0.042 265.755);
@@ -23,7 +23,7 @@
   --destructive: oklch(0.577 0.245 27.325);
   --border: oklch(0.929 0.013 255.508);
   --input: oklch(0.929 0.013 255.508);
-  --ring: oklch(0.704 0.04 256.788);
+  --ring: var(--chart-2);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -31,7 +31,7 @@
   --chart-5: oklch(0.769 0.188 70.08);
   --sidebar: oklch(0.984 0.003 247.858);
   --sidebar-foreground: oklch(0.129 0.042 264.695);
-  --sidebar-primary: oklch(0.208 0.042 265.755);
+  --sidebar-primary: var(--chart-2);
   --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
   --sidebar-accent: oklch(0.968 0.007 247.896);
   --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
@@ -39,7 +39,7 @@
   --sidebar-ring: oklch(0.704 0.04 256.788);
 }
 
-/* Hero palette - dark slate blues (#020617, #0b1120, #0f172a) */
+/* App dark theme – slate palette (#020617, #0b1120, #0f172a) */
 .dark {
   --background: #020617;
   --foreground: #e5e7eb;
@@ -47,7 +47,7 @@
   --card-foreground: #e5e7eb;
   --popover: #0f172a;
   --popover-foreground: #e5e7eb;
-  --primary: #38bdf8;
+  --primary: var(--chart-2);
   --primary-foreground: #020617;
   --secondary: #0b1120;
   --secondary-foreground: #e5e7eb;
@@ -58,7 +58,7 @@
   --destructive: oklch(0.704 0.191 22.216);
   --border: rgba(148, 163, 184, 0.2);
   --input: rgba(148, 163, 184, 0.15);
-  --ring: #38bdf8;
+  --ring: var(--chart-2);
   --chart-1: #38bdf8;
   --chart-2: #a855f7;
   --chart-3: #f97316;
@@ -66,12 +66,12 @@
   --chart-5: oklch(0.645 0.246 16.439);
   --sidebar: #0f172a;
   --sidebar-foreground: #e5e7eb;
-  --sidebar-primary: #38bdf8;
+  --sidebar-primary: var(--chart-2);
   --sidebar-primary-foreground: #020617;
   --sidebar-accent: #0b1120;
   --sidebar-accent-foreground: #e5e7eb;
   --sidebar-border: rgba(148, 163, 184, 0.2);
-  --sidebar-ring: #38bdf8;
+  --sidebar-ring: var(--chart-2);
 }
 
 @theme inline {
@@ -79,10 +79,6 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
-  /* Hero accent colors - work in light & dark */
-  --color-hero-accent-1: #38bdf8;
-  --color-hero-accent-2: #a855f7;
-  --color-hero-accent-3: #f97316;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);

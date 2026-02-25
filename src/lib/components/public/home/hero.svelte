@@ -22,6 +22,14 @@
 </div>
 
 <style>
+	/* Hero accent colors - scoped to hero only (work in light & dark) */
+	.hero-bg,
+	.hero-wrapper {
+		--color-hero-accent-1: #38bdf8;
+		--color-hero-accent-2: #a855f7;
+		--color-hero-accent-3: #f97316;
+	}
+
 	.hero-bg {
 		position: fixed;
 		inset: 0;

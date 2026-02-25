@@ -1,3 +1,7 @@
+<script>
+  import { Button } from '$lib/components/ui/button';
+</script>
+
 <section class="py-24 relative">
     <div class="w-full max-w-7xl px-4 md:px-5 lg:px-5 mx-auto">
         <div class="w-full justify-start items-center gap-12 grid lg:grid-cols-2 grid-cols-1">
@@ -36,10 +40,7 @@
                         </div>
                     </div>
                 </div>
-                <button
-                    class="sm:w-fit w-full px-3.5 py-2 bg-primary hover:bg-primary/90 text-primary-foreground transition-all duration-300 ease-in-out rounded-lg justify-center items-center flex">
-                    <span class="px-1.5 text-sm font-medium leading-6">Read More</span>
-                </button>
+                <Button>Read More</Button>
             </div>
         </div>
     </div>

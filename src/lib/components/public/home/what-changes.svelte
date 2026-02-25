@@ -107,9 +107,7 @@
 				<div
 					class="flex flex-col items-center justify-center gap-7 xl:flex-row xl:justify-start"
 				>
-					<Button href="#" size="lg" class="rounded-full">
-						Schedule a call
-					</Button>
+					<Button href="#">Schedule a call</Button>
 					<span class="text-sm font-normal text-muted-foreground">
 						*Terms &amp; Conditions apply
 					</span>
