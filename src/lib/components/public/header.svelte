@@ -1,17 +1,21 @@
 <script lang="ts">
 	import * as NavigationMenu from '$lib/components/ui/navigation-menu/index.js';
 	import { navigationMenuTriggerStyle } from '$lib/components/ui/navigation-menu/navigation-menu-trigger.svelte';
+	import * as Sheet from '$lib/components/ui/sheet/index.js';
 	import { Button } from '$lib/components/ui/button/index.js';
 	import { cn } from '$lib/utils.js';
 	import type { HTMLAttributes } from 'svelte/elements';
 	import SunIcon from '@lucide/svelte/icons/sun';
 	import MoonIcon from '@lucide/svelte/icons/moon';
 	import UserIcon from '@lucide/svelte/icons/user';
+	import MenuIcon from '@lucide/svelte/icons/menu';
 	import { IsMobile } from '$lib/hooks/is-mobile.svelte.js';
 	import logo from '$lib/assets/logo.svg';
 	import logoWhite from '$lib/assets/logo-white.svg';
 
-	const isMobile = new IsMobile();
+	// 1025 = breakpoint 1024px — mobile menu for tablet and mobile
+	const isMobileMenu = new IsMobile(1025);
+	let mobileMenuOpen = $state(false);
 
 	type NavLink = { type: 'link'; label: string; href: string };
 	type NavDropdown = {
@@ -70,8 +74,10 @@
 	</li>
 {/snippet}
 
-<header class="sticky top-0 z-50 flex w-full items-center border-b bg-background px-4 py-2">
-	<nav class="mx-auto flex w-full max-w-6xl items-center justify-between gap-4">
+<header
+	class="sticky top-0 z-50 flex w-full items-center border-b border-border/40 bg-background/70 px-4 py-4 backdrop-blur-md supports-[backdrop-filter]:bg-background/60 dark:border-border/30 dark:bg-background/50"
+>
+	<nav class="mx-auto flex w-full max-w-7xl items-center justify-between gap-4">
 		<a href="/" class="flex shrink-0" aria-label="Home">
 			<img src={logo} alt="Codegio" class="h-6 dark:hidden" />
 			<img src={logoWhite} alt="Codegio" class="hidden h-6 dark:block" />
