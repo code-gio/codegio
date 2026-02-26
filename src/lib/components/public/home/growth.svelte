@@ -77,7 +77,7 @@
 		>
 			<div class="w-full lg:w-1/4">
 				<div
-					class="relative h-auto rounded-2xl bg-muted px-6 py-9 xl:h-64 border"
+					class="relative h-auto rounded-2xl border border-border/40 dark:border-border/30 bg-background/50 backdrop-blur-md supports-[backdrop-filter]:bg-background/40 dark:bg-background/35 px-6 py-9 xl:h-64"
 				>
 					<h2
 						class="mb-5 text-center text-2xl font-bold leading-9 text-foreground lg:text-left"
@@ -157,7 +157,7 @@
 								class="basis-full ps-3 md:basis-1/2 md:ps-4 lg:basis-1/3 lg:ps-5"
 							>
 								<div
-									class="relative h-auto w-full rounded-2xl border border-border px-4 py-4 transition-all duration-500 sm:px-5 sm:py-6 h-64"
+									class="relative h-auto w-full rounded-2xl border border-border/40 dark:border-border/30 bg-background/50 backdrop-blur-md supports-[backdrop-filter]:bg-background/40 dark:bg-background/35 px-4 py-4 transition-all duration-500 sm:px-5 sm:py-6 h-64"
 								>
 									<div class="mb-3">
 										<Icon class="size-[26px] {slide.iconColor}" />

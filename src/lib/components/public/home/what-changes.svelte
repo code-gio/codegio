@@ -74,7 +74,7 @@
 		>
 			{#each benefits.slice(0, 4) as benefit}
 				<Card.Root
-					class="relative w-full flex flex-col gap-2 rounded-2xl border-border p-4 transition-all duration-500 xl:p-7"
+					class="relative w-full flex flex-col gap-2 rounded-2xl border border-border/40 dark:border-border/30 bg-background/50 backdrop-blur-md supports-[backdrop-filter]:bg-background/40 dark:bg-background/35 p-4 transition-all duration-500 xl:p-7"
 				>
 					<Card.Header class="p-0">
 						<div class="mb-6">
@@ -122,7 +122,7 @@
 			<!-- 5th and 6th cards -->
 			{#each benefits.slice(4, 6) as benefit}
 				<Card.Root
-					class="relative w-full flex flex-col gap-2 rounded-2xl border-border p-4 transition-all duration-500 xl:p-7"
+					class="relative w-full flex flex-col gap-2 rounded-2xl border border-border/40 dark:border-border/30 bg-background/50 backdrop-blur-md supports-[backdrop-filter]:bg-background/40 dark:bg-background/35 p-4 transition-all duration-500 xl:p-7"
 				>
 					<Card.Header class="p-0">
 						<div class="mb-6">
