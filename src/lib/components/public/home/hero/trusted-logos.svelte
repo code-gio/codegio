@@ -1,13 +1,13 @@
 <div class="relative z-10">
   <div class="max-w-7xl px-4 xl:px-0 mx-auto">
     <div class="mb-4">
-      <h2 class="text-muted-foreground-1">
+      <h2 class="text-muted-foreground">
         Helping small and medium businesses build structured, scalable growth systems.      </h2>
     </div>
 
     <div class="flex justify-between gap-6">
       <svg
-        class="py-3 lg:py-5 w-16 h-auto md:w-20 lg:w-24 text-muted-foreground-1"
+        class="py-3 lg:py-5 w-16 h-auto md:w-20 lg:w-24 text-muted-foreground"
         enable-background="new 0 0 2499 614"
         viewBox="0 0 2499 614"
         xmlns="http://www.w3.org/2000/svg"
@@ -18,7 +18,7 @@
       >
 
       <svg
-        class="py-3 lg:py-5 w-16 h-auto md:w-20 lg:w-24 text-muted-foreground-1"
+        class="py-3 lg:py-5 w-16 h-auto md:w-20 lg:w-24 text-muted-foreground"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="-4.126838974812941 0.900767442746961 939.436838974813 230.18142889845947"
         width="2500"
@@ -30,7 +30,7 @@
       >
 
       <svg
-        class="py-3 lg:py-5 w-16 h-auto md:w-20 lg:w-24 text-muted-foreground-1"
+        class="py-3 lg:py-5 w-16 h-auto md:w-20 lg:w-24 text-muted-foreground"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 2428 1002"
@@ -58,7 +58,7 @@
       >
 
       <svg
-        class="py-3 lg:py-5 w-16 h-auto md:w-20 lg:w-24 text-muted-foreground-1"
+        class="py-3 lg:py-5 w-16 h-auto md:w-20 lg:w-24 text-muted-foreground"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 127 33"
@@ -78,7 +78,7 @@
       >
 
       <svg
-        class="py-3 lg:py-5 w-16 h-auto md:w-20 lg:w-24 text-muted-foreground-1"
+        class="py-3 lg:py-5 w-16 h-auto md:w-20 lg:w-24 text-muted-foreground"
         xmlns="http://www.w3.org/2000/svg"
         x="0"
         y="0"

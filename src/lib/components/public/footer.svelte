@@ -18,9 +18,15 @@
 				<p
 					class="py-8 text-sm text-muted-foreground lg:max-w-xs text-center lg:text-left"
 				>
-					Trusted in more than 100 countries & 5 million customers. Have any query?
+					Trusted by service businesses and operators around the world. Have any questions?
 				</p>
-				<Button href="/cta">Contact us</Button>
+				<Button
+					href="/cta"
+					size="lg"
+					class="bg-gradient-to-r from-sky-400 to-violet-500 text-white border-0 shadow-md hover:brightness-110 hover:scale-[1.02] hover:shadow-lg active:scale-[0.98] transition-all duration-200"
+				>
+					Contact us
+				</Button>
 			</div>
 
 			<div class="lg:mx-auto text-left">
@@ -73,9 +79,14 @@
 				<p class="text-sm text-muted-foreground leading-6 mb-7">
 					Subscribe to get the latest news from us
 				</p>
-				<Button href="/newsletter" variant="outline">
+				<Button
+					href="/newsletter"
+					variant="outline"
+					size="lg"
+					class="border-2 bg-gradient-to-r from-sky-400/10 to-violet-500/10 hover:from-sky-400 hover:to-violet-500 hover:text-white hover:border-transparent transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
+				>
 					Subscribe
-					<svg width="15" height="12" viewBox="0 0 15 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<svg class="size-4 shrink-0" width="15" height="12" viewBox="0 0 15 12" fill="none" xmlns="http://www.w3.org/2000/svg">
 						<path
 							d="M1.25 6L13.25 6M9.5 10.5L13.4697 6.53033C13.7197 6.28033 13.8447 6.15533 13.8447 6C13.8447 5.84467 13.7197 5.71967 13.4697 5.46967L9.5 1.5"
 							stroke="currentColor"
@@ -93,7 +104,7 @@
 		<div class="py-7">
 			<div class="flex items-center justify-center flex-col lg:justify-between lg:flex-row gap-4">
 				<span class="text-sm text-muted-foreground">
-					© <a href="/" class="hover:text-foreground transition-colors">Codegio</a> 2025, All rights reserved.
+					© <a href="/" class="hover:text-foreground transition-colors">Codegio</a> {new Date().getFullYear()}, All rights reserved.
 				</span>
 				<div class="flex gap-4 sm:justify-center lg:mt-0">
 					<a

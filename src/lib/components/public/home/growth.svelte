@@ -68,7 +68,7 @@
 			<p
 				class="text-lg font-normal leading-[1.8rem] text-muted-foreground lg:mx-auto lg:max-w-3xl"
 			>
-				This is not just marketing. It's not just automation. It's the
+				This is not just marketing, it's not just automation, it's the
 				architecture that supports sustainable growth.
 			</p>
 		</div>

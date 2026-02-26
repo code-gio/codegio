@@ -1,6 +1,6 @@
 <script lang="ts">
+	import { page } from '$app/stores';
 	import * as NavigationMenu from '$lib/components/ui/navigation-menu/index.js';
-	import { navigationMenuTriggerStyle } from '$lib/components/ui/navigation-menu/navigation-menu-trigger.svelte';
 	import * as Sheet from '$lib/components/ui/sheet/index.js';
 	import { Button } from '$lib/components/ui/button/index.js';
 	import { cn } from '$lib/utils.js';
@@ -12,6 +12,8 @@
 	import { IsMobile } from '$lib/hooks/is-mobile.svelte.js';
 	import logo from '$lib/assets/logo.svg';
 	import logoWhite from '$lib/assets/logo-white.svg';
+
+	const isHome = $derived($page?.url?.pathname === '/');
 
 	// 1025 = breakpoint 1024px — mobile menu for tablet and mobile
 	const isMobileMenu = new IsMobile(1025);
@@ -64,7 +66,7 @@
 					)}
 					{...restProps}
 				>
-					<div class="text-sm font-medium leading-none">{title}</div>
+					<div class="text-sm font-medium leading-none text-foreground">{title}</div>
 					{#if content}
 						<p class="text-muted-foreground line-clamp-2 text-sm leading-snug">{content}</p>
 					{/if}
@@ -88,21 +90,21 @@
 			<div class="flex flex-1 items-center justify-end gap-1 sm:gap-2">
 				<Sheet.Root bind:open={mobileMenuOpen}>
 					<Sheet.Trigger
-						class="inline-flex size-9 items-center justify-center rounded-md hover:bg-accent hover:text-accent-foreground transition-colors"
+						class="inline-flex size-9 items-center justify-center rounded-md text-foreground hover:bg-accent hover:text-accent-foreground transition-colors"
 						aria-label="Open menu"
 					>
 						<MenuIcon class="size-5" />
 					</Sheet.Trigger>
 					<Sheet.Content side="left" class="w-[min(320px,85vw)]">
 						<Sheet.Header class="border-b pb-4">
-							<Sheet.Title class="text-lg font-semibold">Menu</Sheet.Title>
+							<Sheet.Title class="text-lg font-semibold text-foreground">Menu</Sheet.Title>
 						</Sheet.Header>
 						<nav class="flex flex-col gap-1 pt-4">
 							{#each navItems as item}
 								{#if item.type === 'link'}
 									<a
 										href={item.href}
-										class="hover:bg-accent hover:text-accent-foreground rounded-md px-3 py-2.5 text-sm font-medium transition-colors"
+										class="text-foreground hover:bg-accent hover:text-accent-foreground rounded-md px-3 py-2.5 text-sm font-medium transition-colors"
 										onclick={() => (mobileMenuOpen = false)}
 									>
 										{item.label}
@@ -116,7 +118,7 @@
 											{#each item.links as link (link.href)}
 												<a
 													href={link.href}
-													class="hover:bg-accent hover:text-accent-foreground rounded-md px-3 py-2 text-sm transition-colors"
+													class="text-foreground hover:bg-accent hover:text-accent-foreground rounded-md px-3 py-2 text-sm transition-colors"
 													onclick={() => (mobileMenuOpen = false)}
 												>
 													{link.title}
@@ -129,15 +131,17 @@
 						</nav>
 					</Sheet.Content>
 				</Sheet.Root>
-				<Button variant="ghost" size="icon" onclick={toggleTheme} aria-label="Toggle theme">
-					<MoonIcon class="size-4 sm:size-4 dark:hidden" />
-					<SunIcon class="hidden size-4 dark:block sm:size-4" />
-				</Button>
-				<Button variant="ghost" href="/login" size="default">
+				{#if !isHome}
+					<Button variant="ghost" size="icon" onclick={toggleTheme} aria-label="Toggle theme" class="text-foreground">
+						<MoonIcon class="size-4 sm:size-4 dark:hidden" />
+						<SunIcon class="hidden size-4 dark:block sm:size-4" />
+					</Button>
+				{/if}
+				<Button variant="ghost" href="/login" size="default" class="text-foreground">
 					<UserIcon class="size-4" />
 					Log in
 				</Button>
-				<Button variant="ghost" href="/login" size="icon" aria-label="Log in">
+				<Button variant="ghost" href="/login" size="icon" aria-label="Log in" class="text-foreground">
 					<UserIcon class="size-4" />
 				</Button>
 			</div>
@@ -150,7 +154,11 @@
 							<NavigationMenu.Item>
 								<NavigationMenu.Link>
 									{#snippet child()}
-										<a href={item.href} class={navigationMenuTriggerStyle()}>{item.label}</a>
+										<a
+											href={item.href}
+											class="inline-flex h-9 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-medium text-foreground outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus-visible:ring-[3px] focus-visible:ring-ring/50"
+											>{item.label}</a
+										>
 									{/snippet}
 								</NavigationMenu.Link>
 							</NavigationMenu.Item>
@@ -175,11 +183,13 @@
 			</NavigationMenu.Root>
 
 			<div class="flex shrink-0 items-center gap-2">
-				<Button variant="ghost" size="icon" onclick={toggleTheme} aria-label="Toggle theme">
-					<MoonIcon class="size-4 w-4 dark:hidden" />
-					<SunIcon class="hidden size-4 w-4 dark:block" />
-				</Button>
-				<Button variant="ghost" href="/login">
+				{#if !isHome}
+					<Button variant="ghost" size="icon" onclick={toggleTheme} aria-label="Toggle theme" class="text-foreground">
+						<MoonIcon class="size-4 w-4 dark:hidden" />
+						<SunIcon class="hidden size-4 w-4 dark:block" />
+					</Button>
+				{/if}
+				<Button variant="ghost" href="/login" class="text-foreground">
 					<UserIcon class="size-4" />
 					Log in
 				</Button>

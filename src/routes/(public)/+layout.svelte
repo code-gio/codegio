@@ -6,7 +6,7 @@
   const isHome = $derived($page?.url?.pathname === '/');
 </script>
 {#if isHome}
-  <div class="dark">
+  <div class="dark text-foreground bg-background min-h-screen">
     <Header />
     {@render children?.()}
     <Footer />

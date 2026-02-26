@@ -32,10 +32,10 @@
 		<!-- Title -->
 		<div class="mb-10 max-w-3xl lg:mb-14">
 			<h2 class="text-2xl font-semibold text-foreground md:text-4xl md:leading-tight">
-				HOW I WORK
+				HOW WE WORK
 			</h2>
 			<p class="mt-2 text-base leading-relaxed text-muted-foreground md:text-lg">
-				Strategy First. Implementation Second. I don't jump into building until we've mapped
+				Strategy First. Implementation Second. We don't jump into building until we've mapped
 				the real problem and the clearest path to solving it. That discipline saves time,
 				money, and headaches.
 			</p>

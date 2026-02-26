@@ -29,7 +29,7 @@
               <h2
                 class="pb-2 text-center text-foreground font-extrabold font-manrope text-4xl lg:text-5xl lg:text-left leading-tight"
               >
-                I break down real system builds publicly
+                We break down real system builds publicly
               </h2>
               <p
                 class="pb-6 text-base lg:text-lg text-muted-foreground font-normal text-center lg:text-left"
@@ -48,6 +48,7 @@
                 <Button
                   href="#"
                   variant="outline"
+                  size="lg"
                   class="border-2 bg-gradient-to-r from-sky-400/10 to-violet-500/10 hover:from-sky-400 hover:to-violet-500 hover:text-white hover:border-transparent transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
                 >
                   View more

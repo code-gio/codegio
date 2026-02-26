@@ -22,6 +22,7 @@
                         <Button
                             href="/book-strategy-call"
                             variant="outline"
+                            size="lg"
                             class="border-2 bg-gradient-to-r from-sky-400/10 to-violet-500/10 hover:from-sky-400 hover:to-violet-500 hover:text-white hover:border-transparent transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
                         >
                             Book a Strategy Call

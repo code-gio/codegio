@@ -27,9 +27,9 @@
 
 
 	<p class="max-w-136 text-[0.98rem] leading-[1.7] text-muted-foreground">
-		Most businesses don't struggle because of effort.
-		They struggle because their growth is built on disconnected systems.
-		I help service businesses and operators design and implement the infrastructure that drives
+		Most businesses don't struggle because of effort,
+		they struggle because their growth is built on disconnected systems.
+		We help service businesses and operators by designing and implementing the infrastructure that drives
 		consistent revenue, operational clarity, and scalable growth.
 	</p>
 

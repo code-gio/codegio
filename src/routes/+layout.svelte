@@ -8,9 +8,9 @@
 
 	function applyTheme() {
 		const stored = localStorage.getItem('theme');
-		const prefersDark = typeof window !== 'undefined' && window.matchMedia('(prefers-color-scheme: dark)').matches;
-		if (stored === 'dark' || (!stored && prefersDark)) document.documentElement.classList.add('dark');
-		else document.documentElement.classList.remove('dark');
+		// Default to dark unless user explicitly chose light
+		if (stored === 'light') document.documentElement.classList.remove('dark');
+		else document.documentElement.classList.add('dark');
 	}
 
 	onMount(() => {

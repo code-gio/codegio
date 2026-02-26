@@ -18,10 +18,11 @@
                     <div class="w-full flex-col justify-start lg:items-start items-center gap-6 flex">
                         <h2
                             class="text-foreground text-4xl font-bold font-manrope leading-normal lg:text-start text-center">
-                            Built by an Operator Who Understands Systems</h2>
+                            Built by a team of operators who understand systems
+                        </h2>
                         <div class="text-muted-foreground text-base font-normal leading-relaxed lg:text-start text-center space-y-4">
                             <p>
-                                I've led technical teams, built internal platforms, developed reporting systems, architected cloud applications, and implemented automation frameworks for growing organizations.
+                                We've led technical teams, built internal platforms, developed reporting systems, architected cloud applications, and implemented automation frameworks for growing organizations.
                             </p>
                             <p>
                                 I focus on structure.
