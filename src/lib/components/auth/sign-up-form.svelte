@@ -151,33 +151,6 @@
     </Form.Field>
   </div>
 
-  <Form.Field {form} name="username">
-    <Form.Control>
-      {#snippet children({ props })}
-        <Form.Label for="username">Username</Form.Label>
-        <Input
-          {...props}
-          id="username"
-          bind:value={$formData.username}
-          placeholder="johndoe"
-          autocomplete="username"
-          required
-          class="transition-all duration-200"
-          aria-invalid={$errors.username ? "true" : undefined}
-          aria-describedby={$errors.username ? "username-error" : undefined}
-        />
-      {/snippet}
-    </Form.Control>
-    <Form.FieldErrors
-      class="text-sm text-red-500 mt-1"
-      id="username-error"
-      role="alert"
-    />
-    <p class="text-sm text-muted-foreground mt-1">
-      Only letters, numbers, underscores, and hyphens allowed
-    </p>
-  </Form.Field>
-
   <Form.Field {form} name="email">
     <Form.Control>
       {#snippet children({ props })}
