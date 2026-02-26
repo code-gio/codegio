@@ -1,11 +1,18 @@
 import { error } from '@sveltejs/kit';
+import { getPosts } from '$lib/blog/posts';
 
 export async function load({ params }) {
 	try {
 		const post = await import(`../../../../posts/${params.slug}.md`);
+		const allPosts = await getPosts();
+		const relatedPosts = allPosts
+			.filter((p) => p.slug !== params.slug)
+			.slice(0, 3);
 		return {
 			content: post.default,
-			meta: post.metadata
+			meta: post.metadata,
+			slug: params.slug,
+			relatedPosts
 		};
 	} catch {
 		error(404, `Could not find post: ${params.slug}`);

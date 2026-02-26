@@ -30,6 +30,13 @@ export const siteConfig = {
   ripToUsd: 1.0,
   /** Base URL for RSS and OG (no trailing slash). */
   url: dev ? 'http://localhost:5173' : 'https://codegio.com',
+  /** Optional global blog author for article sidebar. */
+  author: {
+    name: 'Codegio',
+    role: 'Product & Engineering',
+    avatar: 'https://images.unsplash.com/photo-1669837401587-f9a4cfe3126e?ixlib=rb-4.0.3&auto=format&fit=facearea&facepad=2&w=320&h=320&q=80',
+    url: 'https://x.com/codegio',
+  },
 };
 
 export const socialLinks: SocialLink[] = [
