@@ -1,10 +1,10 @@
 <script lang="ts">
 	import './layout.css';
-	import '$lib/styles/cursor-aurora.css';
-	import favicon from '$lib/assets/favicon.svg';
+	import { siteConfig } from '$lib/config';
 	import { onMount } from 'svelte';
-
-	let { children } = $props();
+	import { invalidate } from '$app/navigation'
+	let { data, children } = $props();
+	let { supabase, session } = $derived(data);
 
 	function applyTheme() {
 		const stored = localStorage.getItem('theme');
@@ -14,55 +14,22 @@
 	}
 
 	onMount(() => {
+		const { data: authData } = supabase.auth.onAuthStateChange((_event: string, _session: import('@supabase/supabase-js').Session | null) => {
+			if (_session?.expires_at !== session?.expires_at) {
+				invalidate('supabase:auth')
+			}
+		})
 		applyTheme();
-
-		const dot = document.getElementById('cursor-dot');
-		const ring = document.getElementById('cursor-ring');
-		if (!dot || !ring) return;
-
-		document.body.classList.add('custom-cursor');
-
-		let mx = 0;
-		let my = 0;
-		let rx = 0;
-		let ry = 0;
-		let rafId: number;
-
-		function onMouseMove(e: MouseEvent) {
-			mx = e.clientX;
-			my = e.clientY;
-			dot!.style.left = `${mx}px`;
-			dot!.style.top = `${my}px`;
-		}
-
-		function lerpRing() {
-			rx += (mx - rx) * 0.14;
-			ry += (my - ry) * 0.14;
-			ring!.style.left = `${rx}px`;
-			ring!.style.top = `${ry}px`;
-			rafId = requestAnimationFrame(lerpRing);
-		}
-		rafId = requestAnimationFrame(lerpRing);
-
-		document.addEventListener('mousemove', onMouseMove);
-
 		return () => {
-			document.body.classList.remove('custom-cursor');
-			document.removeEventListener('mousemove', onMouseMove);
-			cancelAnimationFrame(rafId);
+			authData.subscription.unsubscribe()
 		};
 	});
 </script>
 
-<svelte:head><link rel="icon" href={favicon} /></svelte:head>
-<!-- Cursor -->
-<div id="cursor-dot" aria-hidden="true"></div>
-<div id="cursor-ring" aria-hidden="true"></div>
-<!-- Aurora BG -->
-<div class="aurora" aria-hidden="true">
-	<div class="aurora-blob"></div>
-	<div class="aurora-blob"></div>
-	<div class="aurora-blob"></div>
-</div>
-<div class="noise" aria-hidden="true"></div>
+<svelte:head>
+	<title>{siteConfig.title}</title>
+	<meta name="description" content={siteConfig.description} />
+	<link rel="icon" href={siteConfig.favicon} type="image/svg+xml" />
+	<link rel="icon" href={siteConfig.faviconDark} type="image/svg+xml" media="(prefers-color-scheme: dark)" />
+</svelte:head>
 {@render children()}

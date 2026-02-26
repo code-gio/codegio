@@ -137,11 +137,11 @@
 						<SunIcon class="hidden size-4 dark:block sm:size-4" />
 					</Button>
 				{/if}
-				<Button variant="ghost" href="/login" size="default" class="text-foreground">
+				<Button variant="ghost" href="/sign-in" size="default" class="text-foreground">
 					<UserIcon class="size-4" />
 					Log in
 				</Button>
-				<Button variant="ghost" href="/login" size="icon" aria-label="Log in" class="text-foreground">
+				<Button variant="ghost" href="/sign-in" size="icon" aria-label="Log in" class="text-foreground">
 					<UserIcon class="size-4" />
 				</Button>
 			</div>
@@ -192,7 +192,7 @@
 						<SunIcon class="hidden size-4 w-4 dark:block" />
 					</Button>
 				{/if}
-				<Button variant="ghost" href="/login" class="text-foreground">
+				<Button variant="ghost" href="/sign-in" class="text-foreground">
 					<UserIcon class="size-4" />
 					Log in
 				</Button>
