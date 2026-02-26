@@ -25,12 +25,12 @@
                                 We've led technical teams, built internal platforms, developed reporting systems, architected cloud applications, and implemented automation frameworks for growing organizations.
                             </p>
                             <p>
-                                I focus on structure.
+                                We focus on building the infrastructure that drives sustainable growth.
                             </p>
-                            <p>
-                                Not hype.<br />
-                                Not trend-chasing.<br />
-                                Not over-engineering.
+                            <p >
+                                We're not hype |
+                                We're not trend-chasing |
+                                We're not over-engineering.
                             </p>
                             <p>
                                 Growth is not created by tactics alone.

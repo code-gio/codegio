@@ -164,7 +164,10 @@
 							</NavigationMenu.Item>
 						{:else}
 							<NavigationMenu.Item>
-								<NavigationMenu.Trigger>{item.label}</NavigationMenu.Trigger>
+								<NavigationMenu.Trigger
+									class="bg-transparent! text-foreground data-[state=open]:bg-accent/50!"
+									>{item.label}</NavigationMenu.Trigger
+								>
 								<NavigationMenu.Content>
 									<ul class="grid w-[200px] gap-2 p-2 sm:w-[280px]">
 										{#each item.links as link (link.href)}
