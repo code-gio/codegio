@@ -51,6 +51,7 @@
     checkProgress: number;
     burstParticles: BurstParticle[];
     glowAlpha: number;
+    cardW: number;
   }
 
   interface Connection {
@@ -67,8 +68,8 @@
   function buildLayout(W: number, H: number) {
     const cols = 3;
     const rows = Math.ceil(ITEMS.length / cols);
-    const cellW = Math.min(W / (cols + 1), 200);
-    const cellH = Math.min(H / (rows + 2), 90);
+    const cellW = Math.min(W / (cols + 0.5), 220);
+    const cellH = Math.min(H / (rows + 1.2), 110);
     const totalW = cols * cellW;
     const totalH = rows * cellH;
     const startX = (W - totalW) / 2 + cellW / 2;
@@ -77,11 +78,15 @@
     cells = ITEMS.map((item, i) => {
       const col = i % cols;
       const row = Math.floor(i / cols);
+      const isLastRow = row === rows - 1;
+      const itemsInLastRow = ITEMS.length - (rows - 1) * cols;
+      const isAloneInRow = isLastRow && itemsInLastRow === 1;
       const existing = cells[i];
       return {
-        x: startX + col * cellW,
+        x: isAloneInRow ? W / 2 : startX + col * cellW,
         y: startY + row * cellH,
         item,
+        cardW: isAloneInRow ? Math.min(W * 0.72, cols * cellW - 20) : 140,
         state:         existing?.state         ?? STATES.IDLE,
         progress:      existing?.progress      ?? 0,
         checkProgress: existing?.checkProgress ?? 0,
@@ -101,6 +106,7 @@
       c.checkProgress = 0;
       c.burstParticles = [];
       c.glowAlpha = 0;
+      // cardW is preserved (set by buildLayout)
     });
   }
 
@@ -259,7 +265,8 @@
       if (cell.state === STATES.IDLE) return;
 
       const eased = easeOutBack(Math.min(cell.progress, 1));
-      const cardW = 140, cardH = 52;
+      const cardW = cell.cardW;
+      const cardH = 52;
       const x     = cell.x - cardW / 2;
       const y     = cell.y - cardH / 2 + (1 - eased) * 22;
       const alpha = eased;

@@ -6,8 +6,8 @@
 <section class="py-16">
     <div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 rounded-3xl bg-secondary border border-border">
         <div class="lg:p-20 p-4 sm:p-10 flex items-center flex-col lg:flex-row justify-between gap-8 lg:gap-0">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 font-inter">
-                <div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 font-inter items-center">
+                <div class="flex flex-col justify-center">
                     <h2 class="text-4xl font-bold font-manrope text-secondary-foreground text-center lg:text-left">Ready to Build the Infrastructure Your Growth Requires?</h2>
                     <div class="mt-6 space-y-4 text-base font-normal leading-6 text-muted-foreground text-center lg:text-left font-inter">
                         <p><strong class="text-secondary-foreground">If you want clarity first:</strong><br>Download the Growth Infrastructure Checklist.</p>
