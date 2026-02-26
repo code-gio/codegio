@@ -1,17 +1,14 @@
 <script>
   import { Button } from '$lib/components/ui/button';
+  import InfrastructureAnimation from './infrastructure-animation.svelte';
 </script>
 
 <section class="py-24 relative">
     <div class="w-full max-w-7xl px-4 md:px-5 lg:px-5 mx-auto">
         <div class="w-full justify-start items-center gap-12 grid lg:grid-cols-2 grid-cols-1">
             <div
-                class="w-full justify-center items-start gap-6 grid sm:grid-cols-2 grid-cols-1 lg:order-first order-last">
-                <div class="pt-24 lg:justify-center sm:justify-end justify-start items-start gap-2.5 flex">
-                    <img class="rounded-lg object-cover" src="https://pagedone.io/asset/uploads/1717741205.png" alt="About section" />
-                </div>
-                <img class="sm:ml-0 ml-auto rounded-lg object-cover" src="https://pagedone.io/asset/uploads/1717741215.png"
-                    alt="About section" />
+                class="w-full lg:order-first order-last">
+                <InfrastructureAnimation />
             </div>
             <div class="w-full flex-col justify-center lg:items-start items-center gap-10 inline-flex">
                 <div class="w-full flex-col justify-center items-start gap-8 flex">

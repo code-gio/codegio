@@ -1,5 +1,6 @@
 <script>
   import { Button } from '$lib/components/ui/button';
+  import NeuralInfrastructureCta from './neural-infrastructure-cta.svelte';
 </script>
 
 <section class="py-16">
@@ -29,15 +30,8 @@
                         </Button>
                     </div>
                 </div>
-                <div class="grid grid-cols-12 gap-3.5">
-                    <div class="col-span-7">
-                        <img src="https://pagedone.io/asset/uploads/1759488816.png" alt="image" class="h-full w-full">
-                    </div>
-                    <div class="col-span-5 flex flex-col gap-3.5">
-                        <img src="https://pagedone.io/asset/uploads/1759488826.png" alt="image" class="h-full w-full">
-                        <img src="https://pagedone.io/asset/uploads/1759488838.png
-                        " alt="image" class="h-full w-full ">
-                    </div>
+                <div class="w-full flex items-center justify-center">
+                    <NeuralInfrastructureCta />
                 </div>
             </div>
         </div>

@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { page } from '$app/stores';
 	import * as NavigationMenu from '$lib/components/ui/navigation-menu/index.js';
 	import * as Sheet from '$lib/components/ui/sheet/index.js';
 	import { Button } from '$lib/components/ui/button/index.js';
@@ -9,13 +8,12 @@
 	import MoonIcon from '@lucide/svelte/icons/moon';
 	import UserIcon from '@lucide/svelte/icons/user';
 	import MenuIcon from '@lucide/svelte/icons/menu';
+	import RssIcon from '@lucide/svelte/icons/rss';
 	import { IsMobile } from '$lib/hooks/is-mobile.svelte.js';
+	import { siteConfig, publicNav } from '$lib/config';
+	import type { NavItem } from '$lib/types/nav';
 	import logo from '$lib/assets/logo.svg';
 	import logoWhite from '$lib/assets/logo-white.svg';
-	import { publicNav } from '$lib/config.js';
-	import type { NavItem } from '$lib/types/nav.js';
-
-	const isHome = $derived($page?.url?.pathname === '/');
 
 	// 1025 = breakpoint 1024px — mobile menu for tablet and mobile
 	const isMobileMenu = new IsMobile(1025);
@@ -60,16 +58,16 @@
 {/snippet}
 
 <header
-	class="sticky top-0 z-50 flex w-full items-center border-b border-border/40 bg-background/70 px-4 py-3 backdrop-blur-md supports-[backdrop-filter]:bg-background/60 dark:border-border/30 dark:bg-background/50 sm:px-6 lg:py-4"
+	class="sticky top-0 z-50 flex w-full items-center border-b border-border/40 bg-background/70 px-4 py-3 backdrop-blur-md supports-backdrop-filter:bg-background/60 dark:border-border/30 dark:bg-background/50 sm:px-6 lg:py-4"
 >
 	<nav class="mx-auto flex w-full max-w-7xl items-center justify-between gap-2 sm:gap-4">
 		<a href="/" class="flex shrink-0" aria-label="Home">
-			<img src={logo} alt="Codegio" class="h-5 w-auto sm:h-6 dark:hidden" />
-			<img src={logoWhite} alt="Codegio" class="hidden h-5 w-auto sm:h-6 dark:block" />
+			<img src={logo} alt={siteConfig.title} class="h-5 w-auto sm:h-6 dark:hidden" />
+			<img src={logoWhite} alt={siteConfig.title} class="hidden h-5 w-auto sm:h-6 dark:block" />
 		</a>
 
 		{#if isMobileMenu.current}
-			<!-- Mobile: hamburger + actions -->
+			<!-- Mobile: hamburger + RSS + theme + log in -->
 			<div class="flex flex-1 items-center justify-end gap-1 sm:gap-2">
 				<Sheet.Root bind:open={mobileMenuOpen}>
 					<Sheet.Trigger
@@ -117,15 +115,26 @@
 									</a>
 								{/if}
 							{/each}
+							<a
+								href="/rss.xml"
+								target="_blank"
+								rel="noopener noreferrer"
+								class="text-foreground hover:bg-accent hover:text-accent-foreground rounded-md px-3 py-2.5 text-sm font-medium transition-colors flex items-center gap-2"
+								onclick={() => (mobileMenuOpen = false)}
+							>
+								<RssIcon class="size-4" />
+								RSS Feed
+							</a>
 						</nav>
 					</Sheet.Content>
 				</Sheet.Root>
-				{#if !isHome}
-					<Button variant="ghost" size="icon" onclick={toggleTheme} aria-label="Toggle theme" class="text-foreground">
-						<MoonIcon class="size-4 sm:size-4 dark:hidden" />
-						<SunIcon class="hidden size-4 dark:block sm:size-4" />
-					</Button>
-				{/if}
+				<Button variant="ghost" size="icon" href="/rss.xml" target="_blank" aria-label="RSS feed" class="text-foreground">
+					<RssIcon class="size-4 sm:size-4" />
+				</Button>
+				<Button variant="ghost" size="icon" onclick={toggleTheme} aria-label="Toggle theme" class="text-foreground">
+					<MoonIcon class="size-4 sm:size-4 dark:hidden" />
+					<SunIcon class="hidden size-4 dark:block sm:size-4" />
+				</Button>
 				<Button variant="ghost" href="/sign-in" size="default" class="text-foreground">
 					<UserIcon class="size-4" />
 					Log in
@@ -135,7 +144,7 @@
 				</Button>
 			</div>
 		{:else}
-			<!-- Desktop: full nav -->
+			<!-- Desktop: public nav + RSS + theme + log in -->
 			<NavigationMenu.Root viewport={true} class="flex flex-1 justify-end">
 				<NavigationMenu.List class="flex flex-wrap items-center gap-1">
 					{#each publicNav as item (item.title + (item.url ?? '') + (item.items?.length ?? 0))}
@@ -177,14 +186,14 @@
 					{/each}
 				</NavigationMenu.List>
 			</NavigationMenu.Root>
-
 			<div class="flex shrink-0 items-center gap-2">
-				{#if !isHome}
-					<Button variant="ghost" size="icon" onclick={toggleTheme} aria-label="Toggle theme" class="text-foreground">
-						<MoonIcon class="size-4 w-4 dark:hidden" />
-						<SunIcon class="hidden size-4 w-4 dark:block" />
-					</Button>
-				{/if}
+				<Button variant="ghost" size="icon" href="/rss.xml" target="_blank" aria-label="RSS feed" class="text-foreground">
+					<RssIcon class="size-4 w-4" />
+				</Button>
+				<Button variant="ghost" size="icon" onclick={toggleTheme} aria-label="Toggle theme" class="text-foreground">
+					<MoonIcon class="size-4 w-4 dark:hidden" />
+					<SunIcon class="hidden size-4 w-4 dark:block" />
+				</Button>
 				<Button variant="ghost" href="/sign-in" class="text-foreground">
 					<UserIcon class="size-4" />
 					Log in

@@ -1,3 +1,4 @@
+import { dev } from '$app/environment';
 import type { NavItem, SocialLink } from "$lib/types/nav";
 import {
   IconLifebuoy,
@@ -27,6 +28,8 @@ export const siteConfig = {
   favicon: "/favicon.svg",
   faviconDark: "/favicon.svg",
   ripToUsd: 1.0,
+  /** Base URL for RSS and OG (no trailing slash). */
+  url: dev ? 'http://localhost:5173' : 'https://codegio.com',
 };
 
 export const socialLinks: SocialLink[] = [
@@ -37,87 +40,23 @@ export const socialLinks: SocialLink[] = [
   },
 ];
 
+export const publicNav: NavItem[] = [
+  {
+    title: "Blog",
+    url: "/blog",
+  },
+];
+
 export const navMain = [
   {
     title: "Dashboard",
     url: "/dashboard",
     icon: IconDashboard,
   },
-  {
-    title: "Packs",
-    url: "/packs",
-    icon: IconPackages,
-  },
-  {
-    title: "Inventory",
-    url: "/inventory",
-    icon: IconCards,
-  },
-  {
-    title: "Decks",
-    url: "/decks",
-    icon: IconFolder,
-  },
-  {
-    title: "Wallet",
-    url: "/wallet",
-    icon: IconWallet,
-  },
-  {
-    title: "Shipments",
-    url: "/shipments",
-    icon: IconTruck,
-  },
+
 
 ];
 
-export const adminNav: NavItem[] = [
-  {
-    title: "Admin Dashboard",
-    url: "/admin",
-    icon: IconDashboard,
-  },
-  {
-    title: "Analytics",
-    url: "/admin/analytics",
-    icon: IconChartLine,
-  },
-  {
-    title: "Transactions",
-    url: "/admin/transactions",
-    icon: IconReceipt,
-  },
-  {
-    title: "Manage Packs",
-    url: "/admin/packs",
-    icon: IconPackages,
-  },
-  {
-    title: "Simulator",
-    url: "/admin/simulator",
-    icon: IconSparkles,
-  },
-  {
-    title: "Card Catalog",
-    url: "/admin/cards",
-    icon: IconCards,
-  },
-  {
-    title: "Fulfillment",
-    url: "/admin/fulfillment",
-    icon: IconTruck,
-  },
-  {
-    title: "Users",
-    url: "/admin/users",
-    icon: IconUsers,
-  },
-  {
-    title: "Settings",
-    url: "/admin/settings",
-    icon: IconSettings,
-  },
-];
 
 export const navSecondary: NavItem[] = [
   {

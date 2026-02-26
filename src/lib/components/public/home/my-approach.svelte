@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { Button } from "$lib/components/ui/button";
+	import ProcessAnimation from "./process-animation.svelte";
 	import { cn } from "$lib/utils.js";
 
 	const steps = [
@@ -30,7 +31,7 @@
 <div >
 	<div class="mx-auto max-w-7xl px-4 py-10 xl:px-0 lg:pt-20 lg:pb-20  sm:px-6 lg:px-8">
 		<!-- Title -->
-		<div class="mb-10 max-w-3xl lg:mb-14">
+		<div class="mb-[10px] max-w-3xl">
 			<h2 class="text-2xl font-semibold text-foreground md:text-4xl md:leading-tight">
 				HOW WE WORK
 			</h2>
@@ -43,13 +44,9 @@
 
 		<!-- Grid -->
 		<div class="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:items-center lg:gap-16">
-			<!-- Image -->
-			<div class="aspect-w-16 aspect-h-9 lg:aspect-none">
-				<img
-					class="w-full rounded-xl object-cover"
-					src="https://images.unsplash.com/photo-1587614203976-365c74645e83?q=80&w=480&h=600&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-					alt="Team collaborating on strategic planning"
-				/>
+			<!-- Process animation (2×2 grid – ensure container has aspect ratio so all 4 cards show) -->
+			<div class="w-full rounded-xl bg-transparent aspect-[420/400] min-h-[260px]">
+				<ProcessAnimation />
 			</div>
 
 			<!-- Timeline -->

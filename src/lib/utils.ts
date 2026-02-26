@@ -11,3 +11,15 @@ export type WithoutChild<T> = T extends { child?: any } ? Omit<T, "child"> : T;
 export type WithoutChildren<T> = T extends { children?: any } ? Omit<T, "children"> : T;
 export type WithoutChildrenOrChild<T> = WithoutChildren<WithoutChild<T>>;
 export type WithElementRef<T, U extends HTMLElement = HTMLElement> = T & { ref?: U | null };
+
+type DateStyle = Intl.DateTimeFormatOptions['dateStyle'];
+
+export function formatDate(
+	date: string,
+	dateStyle: DateStyle = 'medium',
+	locales: string = 'en'
+): string {
+	const dateToFormat = new Date(date.replaceAll('-', '/'));
+	const dateFormatter = new Intl.DateTimeFormat(locales, { dateStyle });
+	return dateFormatter.format(dateToFormat);
+}
