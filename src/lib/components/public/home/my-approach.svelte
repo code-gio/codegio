@@ -31,7 +31,7 @@
 <div >
 	<div class="mx-auto max-w-7xl px-4 py-10 xl:px-0 lg:pt-20 lg:pb-20  sm:px-6 lg:px-8">
 		<!-- Title -->
-		<div class="mb-[10px] max-w-3xl">
+		<div class=" max-w-3xl">
 			<h2 class="text-2xl font-semibold text-foreground md:text-4xl md:leading-tight">
 				HOW WE WORK
 			</h2>
@@ -43,7 +43,7 @@
 		</div>
 
 		<!-- Grid -->
-		<div class="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:items-center lg:gap-16">
+		<div class="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:items-center lg:gap-16 my-8 md:my-2 lg:my-10">
 			<!-- Process animation (2×2 grid – ensure container has aspect ratio so all 4 cards show) -->
 			<div class="w-full rounded-xl bg-transparent aspect-[420/400] min-h-[260px]">
 				<ProcessAnimation />

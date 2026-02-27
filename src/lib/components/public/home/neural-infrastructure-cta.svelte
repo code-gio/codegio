@@ -64,16 +64,27 @@
   let currentIdx = 0;
   let loopTimer = 0;
   let t = 0;
+  let layoutW = 800;
+
+  const BREAKPOINT_SM = 480;
+  const BREAKPOINT_MD = 768;
 
   function buildLayout(W: number, H: number) {
-    const cols = 3;
+    const cols = W < BREAKPOINT_SM ? 1 : W < BREAKPOINT_MD ? 2 : 3;
     const rows = Math.ceil(ITEMS.length / cols);
-    const cellW = Math.min(W / (cols + 0.5), 220);
-    const cellH = Math.min(H / (rows + 1.2), 110);
+    const isMobile = W < BREAKPOINT_MD;
+    const padding = isMobile ? Math.min(W * 0.08, 24) : 0;
+    const availableW = W - padding * 2;
+    const availableH = H - (isMobile ? 80 : 60);
+    const cellW = Math.min(availableW / (cols + (cols > 1 ? 0.3 : 0)), isMobile ? 180 : 220);
+    const cellH = Math.min(availableH / (rows + 0.8), isMobile ? 72 : 110);
     const totalW = cols * cellW;
     const totalH = rows * cellH;
     const startX = (W - totalW) / 2 + cellW / 2;
-    const startY = (H - totalH) / 2 + cellH / 2;
+    const startY = (H - totalH) / 2 + cellH / 2 + (isMobile ? 20 : 0);
+
+    const gap = isMobile ? 20 : 24;
+    const baseCardW = Math.min(cellW - gap, isMobile ? 160 : 140);
 
     cells = ITEMS.map((item, i) => {
       const col = i % cols;
@@ -86,7 +97,7 @@
         x: isAloneInRow ? W / 2 : startX + col * cellW,
         y: startY + row * cellH,
         item,
-        cardW: isAloneInRow ? Math.min(W * 0.72, cols * cellW - 20) : 140,
+        cardW: isAloneInRow ? Math.min(W * 0.85, totalW - 24) : baseCardW,
         state:         existing?.state         ?? STATES.IDLE,
         progress:      existing?.progress      ?? 0,
         checkProgress: existing?.checkProgress ?? 0,
@@ -94,6 +105,7 @@
         glowAlpha:     existing?.glowAlpha     ?? 0,
       };
     });
+    layoutW = W;
   }
 
   function resetLoop() {
@@ -125,11 +137,12 @@
   }
 
   function tryAddConnection(idx: number) {
+    const maxDist = layoutW < BREAKPOINT_MD ? 160 : 260;
     for (let k = 0; k < idx; k++) {
       const dx = cells[idx].x - cells[k].x;
       const dy = cells[idx].y - cells[k].y;
       const d  = Math.sqrt(dx * dx + dy * dy);
-      if (d < 260 && Math.random() < 0.55) {
+      if (d < maxDist && Math.random() < 0.55) {
         connections.push({ from: k, to: idx, progress: 0, alpha: 0 });
       }
     }
@@ -199,6 +212,14 @@
     const W = canvasEl.width, H = canvasEl.height;
     if (W <= 0 || H <= 0) { rafId = requestAnimationFrame(frame); return; }
 
+    const isCompact = layoutW < BREAKPOINT_MD;
+    const cardH = isCompact ? 44 : 52;
+    const fontSz = isCompact ? 11 : 13;
+    const cbr = isCompact ? 8 : 10;
+    const glowR = isCompact ? 48 : 80;
+    const cardPad = isCompact ? 20 : 26;
+    const barInset = isCompact ? 38 : 46;
+
     c.clearRect(0, 0, W, H);
 
     // ── sequencer ──
@@ -266,19 +287,19 @@
 
       const eased = easeOutBack(Math.min(cell.progress, 1));
       const cardW = cell.cardW;
-      const cardH = 52;
       const x     = cell.x - cardW / 2;
-      const y     = cell.y - cardH / 2 + (1 - eased) * 22;
+      const bounce = isCompact ? 14 : 22;
+      const y     = cell.y - cardH / 2 + (1 - eased) * bounce;
       const alpha = eased;
 
       // ambient glow on done nodes
       if (cell.state === STATES.DONE) {
         cell.glowAlpha = 0.06 + 0.04 * Math.sin(t * 0.04 + idx * 1.1);
-        const glowGrad = c.createRadialGradient(cell.x, cell.y, 0, cell.x, cell.y, 80);
+        const glowGrad = c.createRadialGradient(cell.x, cell.y, 0, cell.x, cell.y, glowR);
         glowGrad.addColorStop(0, hexA(cell.item.color, cell.glowAlpha));
         glowGrad.addColorStop(1, hexA(cell.item.color, 0));
         c.beginPath();
-        c.arc(cell.x, cell.y, 80, 0, Math.PI * 2);
+        c.arc(cell.x, cell.y, glowR, 0, Math.PI * 2);
         c.fillStyle = glowGrad;
         c.fill();
       }
@@ -309,7 +330,7 @@
       c.stroke();
 
       // checkbox
-      const cbx = x + 26, cby = y + cardH / 2, cbr = 10;
+      const cbx = x + cardPad, cby = y + cardH / 2;
       c.beginPath();
       c.arc(cbx, cby, cbr, 0, Math.PI * 2);
       if (cell.state === STATES.DONE) {
@@ -333,16 +354,16 @@
       }
 
       // label
-      c.font         = '500 13px "DM Mono", monospace';
+      c.font         = `500 ${fontSz}px "DM Mono", monospace`;
       c.fillStyle    = hexA('#ffffff', 0.85);
       c.textAlign    = 'left';
       c.textBaseline = 'middle';
-      c.fillText(cell.item.label, x + 46, y + cardH / 2 + 0.5);
+      c.fillText(cell.item.label, x + barInset, y + cardH / 2 + 0.5);
 
-      // progress bar
-      if (cell.state !== STATES.IDLE && cell.state !== STATES.ENTERING) {
-        const barX = x + 46, barY = y + cardH - 12;
-        const barW2 = cardW - 56;
+      // progress bar (CHECKING or DONE only; IDLE/ENTERING skipped above)
+      if (cell.state !== STATES.ENTERING) {
+        const barX = x + barInset, barY = y + cardH - (isCompact ? 10 : 12);
+        const barW2 = cardW - (cardPad + barInset);
         c.beginPath();
         c.roundRect(barX, barY, barW2, 2, 1);
         c.fillStyle = hexA(cell.item.color, 0.12);
@@ -379,16 +400,18 @@
     const doneCount = cells.filter(c2 => c2.state === STATES.DONE).length;
     if (doneCount > 0 || currentIdx > 0) {
       const cx   = W / 2;
-      const topY = cells.reduce((mn, cell) => Math.min(mn, cell.y), Infinity) - 54;
+      const topOffset = isCompact ? 42 : 54;
+      const topY = cells.reduce((mn, cell) => Math.min(mn, cell.y), Infinity) - topOffset;
 
-      c.font         = '600 11px "DM Mono", monospace';
+      c.font         = `600 ${isCompact ? 10 : 11}px "DM Mono", monospace`;
       c.textAlign    = 'center';
       c.textBaseline = 'middle';
       c.fillStyle    = hexA('#ffffff', 0.25);
       c.fillText(`${doneCount} / ${ITEMS.length} COMPLETE`, cx, topY);
 
-      const barW = 180, barH = 2;
-      const bx = cx - barW / 2, by = topY + 12;
+      const barW = isCompact ? Math.min(W * 0.7, 140) : 180;
+      const barH = 2;
+      const bx = cx - barW / 2, by = topY + (isCompact ? 10 : 12);
 
       c.beginPath();
       c.roundRect(bx, by, barW, barH, 1);
@@ -448,5 +471,18 @@
     display: block;
     width: 100%;
     height: 100%;
+    object-fit: contain;
+  }
+  @media (max-width: 768px) {
+    .checklist-animation {
+      min-height: 420px;
+      aspect-ratio: 3 / 4;
+    }
+  }
+  @media (max-width: 480px) {
+    .checklist-animation {
+      min-height: 520px;
+      aspect-ratio: 9 / 16;
+    }
   }
 </style>
