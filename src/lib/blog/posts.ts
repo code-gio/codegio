@@ -1,7 +1,7 @@
 import type { Post } from '$lib/types/blog';
 
 export async function getPosts(): Promise<Post[]> {
-	const paths = import.meta.glob<{ metadata: Omit<Post, 'slug'> }>('/src/posts/*.md', {
+	const paths = import.meta.glob<{ metadata: Omit<Post, 'slug'> }>('../../posts/*.md', {
 		eager: true
 	});
 
@@ -23,7 +23,6 @@ export async function getPosts(): Promise<Post[]> {
 			}
 		}
 	}
-
 	posts.sort(
 		(first, second) => new Date(second.date).getTime() - new Date(first.date).getTime()
 	);
